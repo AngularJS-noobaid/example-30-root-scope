@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	
+<html>
+	<head>
+		<title>Root Scope</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	
+	</head>	
+
+	<body ng-app="myApp">
+		
+		<h2>Example #1: Root Scope</h2>	
+
+		<h3>The scope of the following element is:</h3>
+		<h3>{{whichScope}}</h3>
+
+		<div ng-controller="myCtrl">
+    			<h3>The scope of the following element is:</h3>
+    			<h3>{{whichScope}}</h3>
+		</div>
+
+		<h3>The scope of the following element is:</h3>
+		<h3>{{whichScope}}</h3>
+
+		<script>
+			var app = angular.module('myApp', []);
+			
+			app.run(function($rootScope) {
+    				$rootScope.whichScope = 'The root scope';
+			});
+
+			app.controller('myCtrl', function($scope) {
+    				$scope.whichScope = "Not the root scope";
+			});
+		</script>
+	</body>
+</html> 
